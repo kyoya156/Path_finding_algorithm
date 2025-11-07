@@ -238,7 +238,7 @@ class Search_Algorithm:
     
     '''Custom search methods'''
     #custom search 1 is an uninformed search algorithm
-    def custom_search_1(self, position: tuple, end: tuple) -> list:
+    def dijkstra(self, position: tuple, end: tuple) -> list:
         # Dijkstra's algorithm for finding the shortest path in a grid based world
         # This algorithm does not use heuristics and finds the shortest path based on cost
         from queue import PriorityQueue
@@ -275,7 +275,7 @@ class Search_Algorithm:
         return [], None  # Return empty path if no end is found
 
     #custom search 2 is an informed search algorithm
-    def custom_search_2(self, position: tuple, end: tuple) -> list:
+    def iterative_deepening_a_star(self, position: tuple, end: tuple) -> list:
         # Iterative Deepening A* search algorithm
         # This algorithm combines the iterative deepening depth-first search with a heuristic to find the path
 
@@ -365,12 +365,12 @@ class Search_Algorithm:
         elif self.algorithm == "BFS" or self.algorithm == "bfs":
             return self.bfs(position, self.grid.end_location)
         elif self.algorithm == "CUS1" or self.algorithm == "cus1":
-            return self.custom_search_1(position, self.grid.end_location)
+            return self.dijkstra(position, self.grid.end_location)
         elif self.algorithm == "GBFS" or self.algorithm == "gbfs":
             return self.gbfs(position, self.grid.end_location)
         elif self.algorithm == "AS" or self.algorithm == "as":
             return self.a_star(position, self.grid.end_location)
         elif self.algorithm == "CUS2" or self.algorithm == "cus2":
-            return self.custom_search_2(position, self.grid.end_location)
+            return self.iterative_deepening_a_star(position, self.grid.end_location)
         else:
             raise ValueError("Invalid search algorithm specified.")
